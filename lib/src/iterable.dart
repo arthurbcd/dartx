@@ -281,8 +281,16 @@ extension IterableSortedBy<E> on Iterable<E> {
   ///
   /// **Note:** The actual sorting is performed when an element is accessed for
   /// the first time.
-  SortedList<E> sortedBy(Comparable Function(E element) selector) {
-    return SortedList<E>.withSelector(this, selector, 1, null);
+  SortedList<E> sortedBy(
+    Comparable Function(E element) selector, [
+    bool isAscending = true,
+  ]) {
+    return SortedList<E>.withSelector(
+      this,
+      selector,
+      isAscending ? 1 : -1,
+      null,
+    );
   }
 }
 

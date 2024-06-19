@@ -11,6 +11,15 @@ void main() {
   test('sort', () {
     expect([4, 2, 1, 3].sortedBy((it) => it), [1, 2, 3, 4]);
   });
+
+  test('sort, isAscending', () {
+    var isAscending = true;
+    expect([4, 2, 1, 3].sortedBy((it) => it, isAscending), [1, 2, 3, 4]);
+
+    isAscending = false;
+    expect([4, 2, 1, 3].sortedBy((it) => it, isAscending), [4, 3, 2, 1]);
+  });
+
   test('thenBy', () {
     final list = ['ba', 'c', 'aa'].sortedBy((it) => it.length);
     expect(list, ['c', 'ba', 'aa']);
