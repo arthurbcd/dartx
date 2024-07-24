@@ -25,6 +25,16 @@ void main() {
     final thenByDesc = list.thenByDescending((it) => it);
     expect(thenByDesc, ['c', 'ba', 'aa']);
   });
+
+  test('thenBy, ascending', () {
+    final list = ['ba', 'c', 'aa'].sortedBy((it) => it.length);
+    expect(list, ['c', 'ba', 'aa']);
+    final thenBy = list.thenBy((it) => it, ascending: true);
+    expect(thenBy, ['c', 'aa', 'ba']);
+    final thenByDesc = list.thenBy((it) => it, ascending: false);
+    expect(thenByDesc, ['c', 'ba', 'aa']);
+  });
+
   group('_DelegatingIterable', () {
     test('any', () {
       expect(_sortedList.any((it) => it > 2), isTrue);
